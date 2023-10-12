@@ -1,0 +1,20 @@
+@tailwind components;
+
+.logo {
+  letter-spacing: 1.5px;
+  font-size: 24px;
+  color: var(--color-primary);
+  cursor: pointer;
+  font-weight: bold;
+}
+
+@layer components {
+  .menuContainer {
+    @apply flex gap-8 items-center;
+  }
+
+  .menu {
+    @apply font-normal;
+    color: var(--color-gray);
+  }
+}
