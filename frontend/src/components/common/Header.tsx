@@ -16,9 +16,11 @@ export default function Header() {
         <li className={styles.menu}>{getWord(name, "tip")}</li>
         <li className={styles.menu}>{getWord(name, "register")}</li>
         <li className={styles.menu}>{getWord(name, "mypage")}</li>
-        <li>
-          <FaUserCircle size={40} />
-        </li>
+        <Link href="/login">
+          <li>
+            <FaUserCircle size={40} />
+          </li>
+        </Link>
       </ul>
     </header>
   );
