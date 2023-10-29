@@ -7,9 +7,7 @@ import Link from "next/link";
 export default function Login() {
   useEffect(() => {
     const kakao = (window as any).Kakao;
-    if (kakao.isInitialized()) {
-      console.log(kakao.isInitialized());
-    } else {
+    if (!kakao.isInitialized()) {
       kakao.init(process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY);
     }
   }, []);
