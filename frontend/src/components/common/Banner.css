@@ -1,0 +1,14 @@
+.swiper {
+  height: 300px;
+  background: var(--color-lightGray);
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  color: var(--color-gray);
+  font-size: 25px !important;
+}
+
+.swiper-pagination-bullet {
+  cursor: pointer;
+}

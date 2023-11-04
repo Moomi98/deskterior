@@ -20,5 +20,6 @@ li {
   :root {
     --color-primary: #0064ff;
     --color-gray: #7f7f7f;
+    --color-lightGray: #eeeeee;
   }
 }
