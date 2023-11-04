@@ -3,6 +3,7 @@ import "./globals.css";
 import styles from "@/app/layout.module.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import RecoilRootProvider from "@/src/providers/RecoilRootProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,8 +28,10 @@ export default function RootLayout({
         ></script>
       </head>
       <body className={inter.className}>
-        <Header />
-        <main className={styles.main}>{children}</main>
+        <RecoilRootProvider>
+          <Header />
+          <main className={styles.main}>{children}</main>
+        </RecoilRootProvider>
       </body>
     </html>
   );
