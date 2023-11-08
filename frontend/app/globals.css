@@ -12,14 +12,37 @@ body {
   margin: 0;
 }
 
+html {
+  font-size: 14px;
+}
+
 li {
   cursor: pointer;
+}
+
+h1 {
+  font-size: 60px;
+  font-weight: 800;
+  margin: 24px 0;
+}
+
+h2 {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 20px 0;
+}
+
+h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 16px 0;
 }
 
 @layer base {
   :root {
     --color-primary: #0064ff;
-    --color-gray: #7f7f7f;
-    --color-lightGray: #eeeeee;
+    --color-darkGray: #5a5a5a;
+    --color-gray: #a1a1a1;
+    --color-lightGray: #dddddd;
   }
 }
