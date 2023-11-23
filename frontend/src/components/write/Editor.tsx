@@ -52,7 +52,7 @@ export default function Editor(props: EditorProps) {
   };
   return (
     <ReactQuill
-      className="h-3/4"
+      className="flex flex-col h-3/4"
       theme="snow"
       value={value}
       onChange={setValue}
