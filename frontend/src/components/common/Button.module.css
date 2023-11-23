@@ -1,0 +1,25 @@
+@tailwind components;
+
+.logo {
+  letter-spacing: 1.5px;
+  font-size: 24px;
+  color: var(--color-primary);
+  cursor: pointer;
+  font-weight: bold;
+}
+
+@layer components {
+  .container {
+    @apply rounded-lg px-6 py-3 w-fit flex items-center gap-1;
+  }
+
+  .primary {
+    background-color: var(--color-primary);
+    color: white;
+  }
+
+  .normal {
+    background-color: white;
+    border: 1px var(--color-gray) solid;
+  }
+}

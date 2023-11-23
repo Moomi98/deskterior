@@ -3,6 +3,11 @@ interface IWords {
 }
 
 const words: IWords = {
+  Common: {
+    cancel: "취소",
+    register: "등록",
+  },
+
   Header: {
     logo: "Deskterior",
     showAll: "전체보기",
