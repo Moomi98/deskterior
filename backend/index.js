@@ -3,6 +3,7 @@ const express = require("express");
 const http = require("http");
 const app = express();
 const cors = require("cors");
+const tokenMiddleWare = require("./middlewares/authorization");
 require("dotenv").config();
 
 // 몽구스 연결
@@ -29,13 +30,22 @@ app.use(
   express.json()
 );
 
+app.use((req, res, next) => {
+  if (req.url !== "/login") {
+    tokenMiddleWare(req, res, next);
+  } else {
+    next();
+  }
+});
 //서버 생성
 http.createServer(app).listen(app.get("port"), function () {
   console.log("Express server listening on port " + app.get("port"));
 });
 
 //라우팅 모듈 선언
-const indexRouter = require("./routes/login");
+const loginRouter = require("./routes/login");
+const postRouter = require("./routes/post");
 
 //request 요청 URL과 처리 로직을 선언한 라우팅 모듈 매핑
-app.use("/", indexRouter);
+app.use("/", loginRouter);
+app.use("/post", postRouter);

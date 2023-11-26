@@ -52,7 +52,7 @@ router.post("/login", async function (req, res, next) {
       res.status(200).send(sendData);
     }
   } catch (e) {
-    res.status(500).send("");
+    res.status(500).send(e);
   }
 });
 

@@ -3,18 +3,23 @@ require("dotenv").config();
 
 const verifyToken = (req, res, next) => {
   try {
-    const clientToken = req.headers.authorization.split(" ")[1];
-    const decoded = jwt.verify(clientToken, process.env.JWT_SECRET);
-
-    if (decoded) {
-      res.locals.userId = decoded.user_id;
-      next();
-    } else {
-      res.status(401).json({ error: "unauthorized" });
-    }
+    req.decoded = jwt.verify(
+      req.headers.authorization.split(" ")[1],
+      process.env.JWT_SECRET
+    );
+    return next();
   } catch (err) {
-    res.status(401).json({ error: "token expired" });
+    console.log(err);
+    if (err.name === "TokenExpireError") {
+      return res.status(419).json({
+        code: 419,
+        message: "토큰이 만료되었습니다.",
+      });
+    }
+    return res.status(401).json({
+      code: 401,
+      message: "유효하지 않은 토큰입니다.",
+    });
   }
 };
-
-exports.verifyToken = verifyToken;
+module.exports = verifyToken;
