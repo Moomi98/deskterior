@@ -26,9 +26,7 @@ export default function Redirect(params: IRedirect) {
     router.push("/");
   };
 
-  useEffect(() => {
-    getToken();
-  }, []);
+  getToken();
 
   return (
     <div className="flex justify-center items-center w-full h-full">
