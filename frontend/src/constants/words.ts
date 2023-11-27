@@ -6,6 +6,7 @@ const words: IWords = {
   Common: {
     cancel: "취소",
     register: "등록",
+    title: "제목",
   },
 
   Header: {
@@ -23,6 +24,11 @@ const words: IWords = {
 
   Card: {
     views: "조회 수",
+  },
+
+  Write: {
+    thumbnail: "이 곳에 썸네일을 등록해주세요.",
+    warning: "사진의 크기는 20mb 이하만 등록 가능합니다.",
   },
 };
 
