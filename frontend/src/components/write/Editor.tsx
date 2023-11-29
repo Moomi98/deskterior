@@ -1,17 +1,33 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
-import ReactQuill from "react-quill";
+import { useEffect, useMemo, useRef, useState, forwardRef } from "react";
 import { RangeStatic } from "quill";
+import ReactQuill, { ReactQuillProps } from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { storage } from "@/src/firebase/firebase";
 import { uploadBytes, getDownloadURL, ref } from "firebase/storage";
 import { useRecoilValue } from "recoil";
 import { UserState } from "@/src/stores/User";
+import dynamic from "next/dynamic";
+
+interface ForwardedQuillComponent extends ReactQuillProps {
+  forwardedRef: React.Ref<ReactQuill>;
+}
 
 interface EditorProps {
   onUpdateValue: Function;
 }
+
+const QuillNoSSRWrapper = dynamic(
+  async () => {
+    const { default: QuillComponent } = await import("react-quill");
+    const Quill = ({ forwardedRef, ...props }: ForwardedQuillComponent) => (
+      <QuillComponent ref={forwardedRef} {...props} />
+    );
+    return Quill;
+  },
+  { loading: () => <div>...loading</div>, ssr: false }
+);
 
 export default function Editor(props: EditorProps) {
   const [value, setValue] = useState("");
@@ -94,10 +110,10 @@ export default function Editor(props: EditorProps) {
     [user]
   );
   return (
-    <ReactQuill
+    <QuillNoSSRWrapper
       className="flex flex-col h-3/4"
       theme="snow"
-      ref={quillRef}
+      forwardedRef={quillRef}
       value={value}
       onChange={setValue}
       modules={modules}
