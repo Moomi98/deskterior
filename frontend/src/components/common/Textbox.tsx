@@ -8,6 +8,7 @@ interface TextboxProps {
   width?: string | number;
   height?: string | number;
   fontWeight?: string | number;
+  label?: string;
 }
 
 export default function Textbox(props: TextboxProps) {
@@ -19,6 +20,7 @@ export default function Textbox(props: TextboxProps) {
     width = "100%",
     height = "32px",
     fontWeight = 500,
+    label = "",
   } = props;
 
   const [style, setStyle] = useState({});
@@ -35,15 +37,18 @@ export default function Textbox(props: TextboxProps) {
   }, [width, height, fontWeight]);
 
   return (
-    <input
-      type="text"
-      className="w-full h-20 border border-slate-400 px-4 py-2 
-      text-2xl rounded-sm"
-      placeholder={placeholder}
-      disabled={disabled}
-      style={style}
-      value={text}
-      onChange={onValueChanged}
-    />
+    <div className="flex items-center gap-2">
+      {label.length > 0 && <span>{label}</span>}
+      <input
+        type="text"
+        className="w-full h-20 border border-slate-400 px-4 py-2 
+          text-2xl rounded"
+        placeholder={placeholder}
+        disabled={disabled}
+        style={style}
+        value={text}
+        onChange={onValueChanged}
+      />
+    </div>
   );
 }

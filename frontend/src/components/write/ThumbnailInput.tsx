@@ -37,13 +37,13 @@ export default function ThumbnailInput(props: ThumbnailInputProps) {
         onChange={onThumbnailChanged}
       />
       {thumbnail && showPreview ? (
-        <div className="w-full h-80 relative border border-slate-400">
+        <div className="w-full h-80 relative border border-slate-400 rounded">
           <Image src={thumbnail as string} alt="thumbnail" priority fill />
         </div>
       ) : (
         <label
           htmlFor="thumbnail"
-          className="relative flex flex-col items-center justify-center w-full h-80 border rounded-sm cursor-pointer gap-3 border-dashed border-slate-400"
+          className="relative flex flex-col items-center justify-center w-full h-80 border rounded cursor-pointer gap-3 border-dashed border-slate-400"
         >
           <MdAddCircle size={30} />
           <p className="text-slate-500">{getWord("Write", "thumbnail")}</p>
