@@ -1,4 +1,4 @@
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, useEffect } from "react";
 import styles from "@/src/components/common/Button.module.css";
 import { BiPlus } from "react-icons/bi";
 import { MdCreate, MdOutlineDelete, MdCancel } from "react-icons/md";
@@ -11,10 +11,18 @@ interface ButtonProps {
   preset?: ButtonPreset;
   icon?: IconPreset;
   onButtonClicked?: Function;
+  disabled?: boolean;
 }
 
 export default function Button(props: ButtonProps) {
-  const { text, value, preset = "primary", icon, onButtonClicked } = props;
+  const {
+    text,
+    value,
+    preset = "primary",
+    icon,
+    onButtonClicked,
+    disabled,
+  } = props;
 
   const iconSize = 20;
 
@@ -27,10 +35,13 @@ export default function Button(props: ButtonProps) {
 
   return (
     <button
-      className={`${styles.container} ${styles[preset]}`}
+      className={`${styles.container} ${styles[preset]} ${
+        disabled && styles.disabled
+      }`}
       onClick={() => onButtonClicked && onButtonClicked(value)}
+      disabled={disabled}
     >
-      {props.icon && iconPreset[props.icon]}
+      {icon && iconPreset[icon]}
       <span>{text}</span>
     </button>
   );

@@ -18,6 +18,11 @@
     color: white;
   }
 
+  .disabled {
+    background-color: var(--color-primary-disabled);
+    color: white;
+  }
+
   .normal {
     background-color: white;
     border: 1px var(--color-gray) solid;

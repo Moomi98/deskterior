@@ -61,6 +61,7 @@ input {
 @layer base {
   :root {
     --color-primary: #0064ff;
+    --color-primary-disabled: #718bb1;
     --color-darkGray: #5a5a5a;
     --color-gray: #a1a1a1;
     --color-lightGray: #dddddd;
